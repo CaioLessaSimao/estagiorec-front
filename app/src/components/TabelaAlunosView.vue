@@ -19,6 +19,9 @@
             <td>
               <button @click="deleteItem(item.id)">Excluir</button>
             </td>
+            <td>
+              <button @click="teste">Matheus</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -26,6 +29,7 @@
   </template>
   
   <script>
+  import TabelaAlunos from '@/models/TabelaAlunosModel';
   export default {
     data() {
       return {
@@ -65,6 +69,9 @@
       deleteItem(id) {
         this.items = this.items.filter(item => item.id !== id);
       },
+      teste(){
+        console.log(TabelaAlunos.PreencherTabela());
+      }
     },
   };
   </script>

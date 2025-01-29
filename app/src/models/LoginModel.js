@@ -1,7 +1,7 @@
 // src/models/AuthModel.js
 import axios from 'axios';
 
-const API_URL = 'http://34.234.94.5';
+const API_URL = 'https://super-cod-jgjgpxv5rvg2q7w4-80.app.github.dev/';
 
 class AuthModel {
   static async login(credentials) {
