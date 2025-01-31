@@ -29,7 +29,8 @@ export default {
   },
   methods: {
     fetchAlunos() {
-      return TabelaAlunos.PreencherTabela()
+      const alunosView = new TabelaAlunos();
+      return alunosView.ObterTodos();
     },
     handleDelete(id) {
       // TODO: Vamo add algo aqui ainda carma

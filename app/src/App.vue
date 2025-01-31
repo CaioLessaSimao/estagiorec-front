@@ -1,19 +1,9 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <AlunosView/>
+  <router-link to='/alunos'>Alunos</router-link>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
-
-<script>
-//import LoginView from './components/LoginView.vue';
-import AlunosView from './views/AlunosView.vue';
-
-export default {
-  name: 'App',
-  components: {
-    AlunosView
-  }
-}
-</script>
 
 <style>
 #app {
