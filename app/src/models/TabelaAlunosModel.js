@@ -1,7 +1,7 @@
 // src/models/AuthModel.js
 import axios from 'axios';
 
-const API_URL = 'http://super-cod-jgjgpxv5rvg2q7w4-80.app.github.dev';
+const API_URL = 'http://localhost:80';
 
 class TabelaAlunos {
   static async PreencherTabela() {
