@@ -10,24 +10,24 @@ class TabelaAlunos {
   }
 
   static async Obter(id) {
-    const response = await axios.get(`${API_URL}/alunos/id`);
-    id
+    const response = await axios.get(`${API_URL}/alunos/${id}`);
+            
     return response.data;
   }
 
-  static async Atualizar() {
+  static async Atualizar(dados) {
     //axios.put(url[, data[, config]])
-    const response = await axios.get(`${API_URL}/alunos`);
+    const response = await axios.put(`${API_URL}/alunos/${dados.id}`, dados);
     return response.data;
   }
 
-  static async Criar() {
-    const response = await axios.get(`${API_URL}/alunos`);
+  static async Criar(dados) {
+    const response = await axios.post(`${API_URL}/alunos`, dados);
     return response.data;
   }
 
-  static async Deletar() {
-    const response = await axios.get(`${API_URL}/alunos`);
+  static async Deletar(id) {
+    const response = await axios.delete(`${API_URL}/alunos/${id}`);
     return response.data;
   }
 

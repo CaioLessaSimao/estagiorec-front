@@ -12,7 +12,7 @@
 
 <script>
 import GenericTableView from '@/components/GenericTableView.vue'
-import TabelaAlunos from '@/models/TabelaAlunosModel'
+import TabelaAlunos from '@/models/repository/TabelaAlunosRepository'
 
 export default {
   components: {
