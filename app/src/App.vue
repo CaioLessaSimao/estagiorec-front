@@ -1,16 +1,16 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <TabelaAlunosView/>
+  <AlunosView/>
 </template>
 
 <script>
 //import LoginView from './components/LoginView.vue';
-import TabelaAlunosView from './components/TabelaAlunosView.vue';
+import AlunosView from './views/AlunosView.vue';
 
 export default {
   name: 'App',
   components: {
-    TabelaAlunosView
+    AlunosView
   }
 }
 </script>

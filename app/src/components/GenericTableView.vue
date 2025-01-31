@@ -1,22 +1,23 @@
-<!-- src/components/TableComponent.vue -->
 <template>
   <div>
     <table>
       <thead>
         <tr>
-          <th @click="sortBy('nome')">Nome</th>
-          <th @click="sortBy('matricula')">Matricula</th>
-          <th @click="sortBy('orientador')">Orientador</th>
-          <th>Ações</th>
+          <th v-for="header in headers" :key="header.key" @click="sortBy(header.key)">
+            {{ header.label }}
+          </th>
+          <th v-if="actions">Ações</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in sortedItems" :key="item.id">
-          <td>{{ item.id }}</td>
-          <td>{{ item.nome }}</td>
-          <td>{{ item.matricula }}</td>
-          <td>
-            <button @click="deleteItem(item.id)">Excluir</button>
+          <td v-for="header in headers" :key="header.key">
+            {{ item[header.key] }}
+          </td>
+          <td v-if="actions">
+            <slot name="actions" :item="item">
+              <button @click="deleteItem(item.id)">Excluir</button>
+            </slot>
           </td>
         </tr>
       </tbody>
@@ -25,29 +26,40 @@
 </template>
 
 <script>
-import TabelaAlunos from '@/models/TabelaAlunosModel';
-
 export default {
+  name: 'GenericTableView',
+  props: {
+    headers: {
+      type: Array,
+      required: true
+    },
+    fetchData: {
+      type: Function,
+      required: true
+    },
+    actions: {
+      type: Boolean,
+      default: true
+    }
+  },
   data() {
     return {
       items: [],
       sortKey: '',
-      sortOrder: 'asc',
-    };
+      sortOrder: 'asc'
+    }
   },
   computed: {
     sortedItems() {
       if (!this.sortKey) return this.items;
-
       return this.items.slice().sort((a, b) => {
         const aValue = a[this.sortKey];
         const bValue = b[this.sortKey];
-
         if (aValue < bValue) return this.sortOrder === 'asc' ? -1 : 1;
         if (aValue > bValue) return this.sortOrder === 'asc' ? 1 : -1;
         return 0;
       });
-    },
+    }
   },
   methods: {
     sortBy(key) {
@@ -58,23 +70,22 @@ export default {
         this.sortOrder = 'asc';
       }
     },
-    deleteItem(matricula) {
-      this.items = this.items.filter(item => item.matricula !== matricula);
+    deleteItem(id) {
+      this.$emit('delete', id);
     },
-    async preencherTabela() {
+    async loadData() {
       try {
-        const response = await TabelaAlunos.PreencherTabela();
+        const response = await this.fetchData();
         this.items = response;
       } catch (error) {
         console.error(error);
-      }	
+      }
     }
   },
   mounted() {
-    this.preencherTabela();
-    console.log(this.items);
+    this.loadData();
   }
-};
+}
 </script>
 
 <style scoped>
