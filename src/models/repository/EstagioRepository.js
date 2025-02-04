@@ -1,10 +1,8 @@
-import BaseRepository from './BaseRepository';
-
-class EstagioRepository extends BaseRepository {
+class EstagioRepository {
   
-  api_entity = "estagios";
-  
+  api_entity = "estagios"; 
 
+  // TODO: Refazer com join
 
 }
 

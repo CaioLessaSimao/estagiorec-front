@@ -3,7 +3,7 @@ class Empresa{
     nome;
     //Estagios;
 
-    constructor(id, matricula, nome){
+    constructor(id, nome){
         this.id = id;
         this.nome = nome;
         //estagios.forEach((estagio) => this.Estagios.add(estagio) );
