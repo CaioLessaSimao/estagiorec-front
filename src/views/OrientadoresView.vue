@@ -21,10 +21,10 @@ export default {
     data() {
       return {
         headers: [
-          { key: 'id', label: 'ID' },
-          { key: 'nome', label: 'Nome' },
-          { key: 'email', label: 'Email' },
-          { key: 'telefone', label: 'Telefone' },
+          { key: 'Id', label: 'ID' },
+          { key: 'Nome', label: 'Nome' },
+          { key: 'Email', label: 'Email' },
+          { key: 'Telefone', label: 'Telefone' },
         ]
       }
     },

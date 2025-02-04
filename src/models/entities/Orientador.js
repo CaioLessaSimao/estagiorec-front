@@ -1,14 +1,14 @@
 class Orientador{
-    id;
-    nome;
-    email;
-    telefone;
+    Id;
+    Nome;
+    Email;
+    Telefone;
 
-    constructor(id, nome, email, telefone){
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
+    constructor(Id, Nome, Email, Telefone){
+        this.Id = Id;
+        this.Nome = Nome;
+        this.Email = Email;
+        this.Telefone = Telefone;
         //estagios.forEach((estagio) => this.estagios.add(estagio) );
     }
 }

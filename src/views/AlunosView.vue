@@ -21,9 +21,9 @@ export default {
   data() {
     return {
       headers: [
-        { key: 'id', label: 'ID' },
-        { key: 'nome', label: 'Nome' },
-        { key: 'matricula', label: 'Matrícula' },
+        { key: 'Id', label: 'ID' },
+        { key: 'Nome', label: 'Nome' },
+        { key: 'Matricula', label: 'Matrícula' },
       ]
     }
   },

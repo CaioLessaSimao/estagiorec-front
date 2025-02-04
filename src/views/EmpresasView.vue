@@ -21,8 +21,8 @@
     data() {
       return {
         headers: [
-          { key: 'id', label: 'ID' },
-          { key: 'nome', label: 'Nome' },
+          { key: 'Id', label: 'ID' },
+          { key: 'Nome', label: 'Nome' },
         ]
       }
     },

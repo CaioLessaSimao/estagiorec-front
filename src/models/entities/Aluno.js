@@ -1,12 +1,12 @@
 class Aluno{
-    id;
-    matricula;
-    nome;
+    Id;
+    Matricula;
+    Nome;
 
-    constructor(id, matricula, nome){
-        this.id = id;
-        this.matricula = matricula;
-        this.nome = nome;
+    constructor(Id, Matricula, Nome){
+        this.Id = Id;
+        this.Matricula = Matricula;
+        this.Nome = Nome;
         //estagios.forEach((estagio) => this.Estagios.add(estagio) );
     }
 }

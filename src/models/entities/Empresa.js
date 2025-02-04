@@ -1,11 +1,11 @@
 class Empresa{
-    id;
-    nome;
+    Id;
+    Nome;
     //Estagios;
 
-    constructor(id, nome){
-        this.id = id;
-        this.nome = nome;
+    constructor(Id, Nome){
+        this.Id = Id;
+        this.Nome = Nome;
         //estagios.forEach((estagio) => this.Estagios.add(estagio) );
     }
 
