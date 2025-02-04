@@ -12,7 +12,7 @@
   
   <script>
   import GenericTableView from '@/components/GenericTableView.vue'
-  import EmpresaRepository from '@/models/repository/EmpresaRepository.js'
+  import EmpresaController from '@/controllers/EmpresaController.js'
   
   export default {
     components: {
@@ -28,8 +28,8 @@
     },
     methods: {
       fetchEmpresas() {
-        const empresasRepository = new EmpresaRepository();
-        return empresasRepository.ObterTodos();
+        const empresasController = new EmpresaController();
+        return empresasController.ObterTodos();
       },
       handleDelete(id) {
         // TODO: Vamo add algo aqui ainda carma

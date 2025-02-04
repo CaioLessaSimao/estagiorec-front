@@ -12,7 +12,7 @@
 
 <script>
 import GenericTableView from '@/components/GenericTableView.vue'
-import AlunoRepository from '@/models/repository/AlunoRepository.js'
+import AlunoController from '@/controllers/AlunoController.js'
 
 export default {
   components: {
@@ -29,8 +29,8 @@ export default {
   },
   methods: {
     fetchAlunos() {
-      const alunosRepository = new AlunoRepository();
-      return alunosRepository.ObterTodos();
+      const alunosController = new AlunoController();
+      return alunosController.ObterTodos();
     },
     handleDelete(id) {
       // TODO: Vamo add algo aqui ainda carma

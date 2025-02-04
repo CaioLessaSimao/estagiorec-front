@@ -12,7 +12,7 @@
   
 <script>
 import GenericTableView from '@/components/GenericTableView.vue'
-import OrientadorRepository from '@/models/repository/OrientadorRepository.js'
+import OrientadorController from '@/controllers/OrientadorController.js'
   
 export default {
     components: {
@@ -30,8 +30,8 @@ export default {
     },
     methods: {
       fetchOrientadores() {
-        const orientadoresRepository = new OrientadorRepository();
-        return orientadoresRepository.ObterTodos();
+        const orientadoresController = new OrientadorController();
+        return orientadoresController.ObterTodos();
       },
       handleDelete(id) {
         // TODO: Vamo add algo aqui ainda carma
