@@ -29,8 +29,8 @@ export default {
   },
   methods: {
     fetchAlunos() {
-      const alunosView = new AlunoRepository();
-      return alunosView.ObterTodos();
+      const alunosRepository = new AlunoRepository();
+      return alunosRepository.ObterTodos();
     },
     handleDelete(id) {
       // TODO: Vamo add algo aqui ainda carma

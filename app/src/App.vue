@@ -1,5 +1,7 @@
 <template>
   <router-link to='/alunos'>Alunos</router-link>
+  <router-link to='/orientadores'>Orientadores</router-link>
+  <router-link to='/empresas'>Empresas</router-link>
   <div>
     <router-view></router-view>
   </div>
