@@ -19,7 +19,6 @@ class BaseRepository {
   }
 
   static async Atualizar(dados) {
-    //axios.put(url[, data[, config]])
     const response = await axios.put(`${this.API_URL}/${this.api_entity}/${dados.id}`, dados);
     return response.data;
   }
