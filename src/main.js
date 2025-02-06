@@ -3,6 +3,7 @@ import { createRouter, createWebHistory} from 'vue-router'
 import AlunosView from './views/AlunosView.vue'
 import EmpresasView from './views/EmpresasView'
 import OrientadoresView from './views/OrientadoresView'
+import LoginView from './views/LoginView.vue'
 import 'vuetify/styles'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
@@ -15,6 +16,7 @@ const router = createRouter({
         {path: '/alunos', component: AlunosView},
         {path: '/empresas', component: EmpresasView},
         {path: '/orientadores', component: OrientadoresView},
+        {path: '/', component: LoginView},
     ]
 });
 
