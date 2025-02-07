@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <table>
+  <div class="table-container">
+    <v-table class="table-content" density="compact" theme="dark" 
+    height="100%"
+    fixed-header>
       <thead>
         <tr>
           <th v-for="header in headers" :key="header.key" @click="sortBy(header.key)">
@@ -10,18 +12,33 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in sortedItems" :key="item.id">
+        <tr v-for="item in paginatedItems" :key="item.id">
           <td v-for="header in headers" :key="header.key">
             {{ item[header.key] }}
           </td>
           <td v-if="actions">
-            <slot name="actions" :item="item">
+            <slot name="actions" :item="item" >
               <button @click="deleteItem(item.id)">Excluir</button>
             </slot>
           </td>
         </tr>
       </tbody>
-    </table>
+    </v-table>
+
+    <div class = "pagination-controls">
+      <button @click="currentPage--" :disabled="currentPage === 1">Anterior</button>
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+      <button @click="currentPage++" :disabled="currentPage === totalPages">Próxima</button>
+
+    <label>Itens por página:
+      <select v-model="itemsPerPage">
+        <option :value="10">10</option>
+        <option :value="20">20</option>
+        <option :value="50">50</option>
+      </select>
+    </label>  
+    </div>
+
   </div>
 </template>
 
@@ -46,7 +63,9 @@ export default {
     return {
       items: [],
       sortKey: '',
-      sortOrder: 'asc'
+      sortOrder: 'asc',
+      currentPage: 1,
+      itemsPerPage: 10
     }
   },
   computed: {
@@ -59,6 +78,15 @@ export default {
         if (aValue > bValue) return this.sortOrder === 'asc' ? 1 : -1;
         return 0;
       });
+    },
+    paginatedItems(){
+      const sorted = this.sortedItems;
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return sorted.slice(start, end)
+    },
+    totalPages(){
+      return Math.ceil(this.items.length / this.itemsPerPage)
     }
   },
   methods: {
@@ -89,35 +117,84 @@ export default {
 </script>
 
 <style scoped>
-table {
-  width: 100%;
-  border-collapse: collapse;
+.table-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 85px); 
+  padding: 10px;
 }
 
-th, td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
+.table-content {
+  flex-grow: 1;
+  overflow: auto;
+  background: #1e1e1e;
+  color: white;
+  border-radius: 8px;
 }
 
 th {
-  background-color: #f4f4f4;
+  background-color: #333;
+  color: white;
+  padding: 10px;
   cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
 }
 
 th:hover {
-  background-color: #e0e0e0;
+  background-color: #444;
 }
 
-button {
+td {
+  padding: 10px;
+  border-bottom: 1px solid #444;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.delete-btn {
   padding: 5px 10px;
   background-color: #ff4d4d;
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
 }
 
-button:hover {
+.delete-btn:hover {
   background-color: #cc0000;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: #222;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.pagination-controls button {
+  padding: 5px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination-controls button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.pagination-controls select {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  border: none;
 }
 </style>
