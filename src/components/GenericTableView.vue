@@ -138,7 +138,7 @@ th {
   color: white;
   padding: 10px;
   cursor: pointer;
-  text-align: center;
+  text-align: center !important;
   vertical-align: middle;
 }
 

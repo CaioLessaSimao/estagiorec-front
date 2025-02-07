@@ -20,6 +20,10 @@
         <router-link to='/empresas' class="custom-link">Empresas</router-link>
       </v-btn>
 
+      <v-btn>
+        <router-link to='/estagios' class="custom-link">Estágios</router-link>
+      </v-btn>
+
       <v-btn icon @click="toggleTheme">
         <v-icon>{{ isDark ? 'mdi-weather-night' : 'mdi-white-balance-sunny' }}</v-icon>
       </v-btn>
