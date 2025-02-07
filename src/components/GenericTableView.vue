@@ -197,4 +197,12 @@ td {
   color: white;
   border: none;
 }
+
+.pagination-controls span{
+  color:rgb(255, 255, 255);
+}
+
+.pagination-controls label{
+  color:rgb(255, 255, 255);
+}
 </style>
