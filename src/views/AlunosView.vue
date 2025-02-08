@@ -43,18 +43,18 @@ export default {
 
 <style scoped>
 .button-custom{
-  background-color: #007BFF;
+  background-color: #757474;
   border: none;
   border-radius: 2px;
   padding: 4px 8px;
-  color: white;
+  color: rgb(255, 255, 255);
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .button-custom:hover{
-  box-shadow: 0 0px 10px rgba(0, 123,255,0.8);
-  transform: translateY(1.05);
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.8);
+  transform: translateY(-1.5px);
 }
 
 </style>

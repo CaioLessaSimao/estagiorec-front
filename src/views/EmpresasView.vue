@@ -5,7 +5,7 @@
     @delete="handleDelete"
   >
     <template #actions="{ item }">
-      <button @click="Ordenar(item.Id)">Ver estágios</button>
+      <button class="button-custom" @click="Ordenar(item.Id)">Ver Estágios</button>
     </template>
   </generic-table-view>
 </template>
@@ -41,3 +41,21 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.button-custom{
+  background-color: #757474;
+  border: none;
+  border-radius: 2px;
+  padding: 4px 8px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.button-custom:hover{
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.8);
+  transform: translateY(-1.5px);
+}
+
+</style>
