@@ -13,7 +13,8 @@ class AlunoRepository {
   }
 
   async Obter(id){
-    return await this.api_client.Obter(id);
+    const responseJson = await this.api_client.Obter(id);
+    return new Aluno(responseJson.id, responseJson.matricula, responseJson.nome);
   }
 
   async Atualizar(dados){

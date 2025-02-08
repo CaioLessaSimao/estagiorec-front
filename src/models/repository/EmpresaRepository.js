@@ -13,7 +13,8 @@ class EmpresaRepository {
   }
 
   async Obter(id){
-    return await this.api_client.Obter(id);
+    const responseJson = await this.api_client.Obter(id);
+    return new Empresa(responseJson.id, responseJson.nome);
   }
 
   async Atualizar(dados){

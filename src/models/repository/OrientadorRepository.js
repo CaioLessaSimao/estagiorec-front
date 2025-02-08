@@ -13,7 +13,8 @@ class OrientadorRepository {
   }
 
   async Obter(id){
-    return await this.api_client.Obter(id);
+    const responseJson = await this.api_client.Obter(id);
+    return new Orientador(responseJson.id, responseJson.nome, responseJson.email, responseJson.telefone);
   }
 
   async Atualizar(dados){

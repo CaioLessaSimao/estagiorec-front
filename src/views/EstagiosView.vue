@@ -25,16 +25,14 @@
     data() {
       return {
         headers: [
-          { key: 'Aluno', label: 'Aluno' },
+          { key: 'Id',          label: 'ID' },
+          { key: 'AlunoNome',       label: 'Aluno' },
+          { key: 'AlunoMatricula', label: 'Matrícula'},
+          { key: "OrientadorNome",  label: "Orientador" },
+          { key: "EmpresaNome",     label: "Empresa" },
           { key: "DatIni",      label: "DatIni" },
           { key: "DatFim",      label: "DatFim" },
           { key: "Situacao",    label: "Situacao" },
-          { key: "Aluno",       label: "Aluno" },
-          { key: "AlunoId",     label: "AlunoId" },
-          { key: "Orientador",  label: "Orientador" },
-          { key: "OrientadorId",label: "OrientadorId" },
-          { key: "Empresa",     label: "Empresa" },
-          { key: "EmpresaId",   label: "EmpresaId" }
         ]
       };
     },
