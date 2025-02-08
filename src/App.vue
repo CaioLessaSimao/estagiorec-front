@@ -28,11 +28,6 @@
         <v-icon>{{ isDark ? 'mdi-weather-night' : 'mdi-white-balance-sunny' }}</v-icon>
       </v-btn>
     </v-app-bar>
-  
-  
-  <router-link to='/alunos'>Alunos</router-link>
-  <router-link to='/orientadores'>Orientadores</router-link>
-  <router-link to='/empresas'>Empresas</router-link>
   <div>
     <router-view></router-view>
   </div> 
