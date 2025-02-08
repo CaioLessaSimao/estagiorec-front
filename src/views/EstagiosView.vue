@@ -4,14 +4,9 @@
       <i class="search icon"></i>
     </div>
     <generic-table-view
-      :ordenar="ordenar"
       :headers="headers"
       :fetchData="fetchEstagios"
-      @delete="handleDelete"
     >
-      <template #actions="{ item }">
-        <button @click="deleteEstagio(item.id)">Excluir</button>
-      </template>
     </generic-table-view>
   </template>
     
@@ -42,11 +37,6 @@
         const estagiosController = new EstagioController();
         return estagiosController.ObterTodos();
       },
-      handleDelete(id) {
-        // TODO: Vamo add algo aqui ainda carma
-        console.log('Deletar estagio com id', id)
-      },
-
     }
   }
   </script>

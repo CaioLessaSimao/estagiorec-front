@@ -8,7 +8,7 @@
           <th v-for="header in headers" :key="header.key" @click="sortBy(header.key)">
             {{ header.label }}
           </th>
-          <th v-if="actions">Ações</th>
+          <th v-if="$slots.actions">Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -16,9 +16,8 @@
           <td v-for="header in headers" :key="header.key" >
             {{ item[header.key] }}
           </td>
-          <td v-if="actions">
+          <td v-if="$slots.actions">
             <slot name="actions" :item="item" >
-              <button @click="ordenar(item.Id)">Ordenar</button>
             </slot>
           </td>
         </tr>
@@ -102,9 +101,6 @@ export default {
         this.sortOrder = 'asc';
       }
     },
-    deleteItem(id) {
-      this.$emit('delete', id);
-    },
     async loadData() {
       try {
         const response = await this.fetchData();
@@ -155,19 +151,6 @@ td {
   border-bottom: 1px solid #444;
   text-align: center;
   vertical-align: middle;
-}
-
-.delete-btn {
-  padding: 5px 10px;
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.delete-btn:hover {
-  background-color: #cc0000;
 }
 
 .pagination-controls {

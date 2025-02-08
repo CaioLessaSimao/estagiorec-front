@@ -4,10 +4,8 @@
       <i class="search icon"></i>
     </div>
     <generic-table-view
-      :ordenar="ordenar"
       :headers="headers"
       :fetchData="fetchEstagios"
-      @delete="handleDelete"
     >
     </generic-table-view>
   </template>
@@ -39,11 +37,6 @@
         const estagiosController = new EstagioController();
         return estagiosController.ObterPorEmpresa(this.$route.params.id);
       },
-      handleDelete(id) {
-        // TODO: Vamo add algo aqui ainda carma
-        console.log('Deletar estagio com id', id)
-      },
-
     }
   }
   </script>
