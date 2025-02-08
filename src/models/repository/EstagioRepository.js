@@ -16,6 +16,61 @@ class EstagioRepository {
     this.orientador_repository = new OrientadorRepository();
   }
 
+  
+  async ObterPorAluno(id){
+    const responseJson = await this.api_client.ObterPorAluno(id);
+    return await Promise.all(responseJson.map(async (estagio) => {
+      const aluno = await this.aluno_repository.Obter(estagio.alunoId);
+      const empresa = await this.empresa_repository.Obter(estagio.empresaId);
+      const orientador = await this.orientador_repository.Obter(estagio.orientadorId);
+      return new Estagio(
+        estagio.id, 
+        estagio.datIni, 
+        estagio.datFim, 
+        estagio.situacao, 
+        aluno, 
+        empresa, 
+        orientador
+      );
+    }));
+  }
+
+  async ObterPorOrientador(id){
+    const responseJson = await this.api_client.ObterPorOrientador(id);
+    return await Promise.all(responseJson.map(async (estagio) => {
+      const aluno = await this.aluno_repository.Obter(estagio.alunoId);
+      const empresa = await this.empresa_repository.Obter(estagio.empresaId);
+      const orientador = await this.orientador_repository.Obter(estagio.orientadorId);
+      return new Estagio(
+        estagio.id, 
+        estagio.datIni, 
+        estagio.datFim, 
+        estagio.situacao, 
+        aluno, 
+        empresa, 
+        orientador
+      );
+    }));
+  }
+  
+  async ObterPorEmpresa(id){
+    const responseJson = await this.api_client.ObterPorEmpresa(id);
+    return await Promise.all(responseJson.map(async (estagio) => {
+      const aluno = await this.aluno_repository.Obter(estagio.alunoId);
+      const empresa = await this.empresa_repository.Obter(estagio.empresaId);
+      const orientador = await this.orientador_repository.Obter(estagio.orientadorId);
+      return new Estagio(
+        estagio.id, 
+        estagio.datIni, 
+        estagio.datFim, 
+        estagio.situacao, 
+        aluno, 
+        empresa, 
+        orientador
+      );
+    }));
+  }
+  
   async ObterTodos(){
     const responseJson = await this.api_client.ObterTodos();
     return await Promise.all(responseJson.map(async (estagio) => {

@@ -40,7 +40,7 @@
     methods: {
       fetchEstagios() {
         const estagiosController = new EstagioController();
-        return estagiosController.ObterTodos();
+        return estagiosController.ObterPorOrientador(this.$route.params.id);
       },
       handleDelete(id) {
         // TODO: Vamo add algo aqui ainda carma

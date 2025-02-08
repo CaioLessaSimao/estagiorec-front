@@ -40,12 +40,17 @@
     methods: {
       fetchEstagios() {
         const estagiosController = new EstagioController();
-        return estagiosController.ObterTodos();
+        return estagiosController.ObterPorAluno(this.$route.params.id);
       },
       handleDelete(id) {
         // TODO: Vamo add algo aqui ainda carma
         console.log('Deletar estagio com id', id)
       },
+
+      ordenar(item){
+        
+        console.log(item)
+      }
 
     }
   }

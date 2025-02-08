@@ -9,9 +9,6 @@
       :fetchData="fetchEstagios"
       @delete="handleDelete"
     >
-      <template #actions="{ item }">
-        <button @click="deleteEstagio(item.id)">Excluir</button>
-      </template>
     </generic-table-view>
   </template>
     
@@ -40,7 +37,7 @@
     methods: {
       fetchEstagios() {
         const estagiosController = new EstagioController();
-        return estagiosController.ObterTodos();
+        return estagiosController.ObterPorEmpresa(this.$route.params.id);
       },
       handleDelete(id) {
         // TODO: Vamo add algo aqui ainda carma

@@ -5,7 +5,7 @@
     @delete="handleDelete"
   >
     <template #actions="{ item }">
-      <button @click="deleteOrientador(item.id)">Excluir</button>
+      <button @click="Ordenar(item.Id)">Ver estágios</button>
     </template>
   </generic-table-view>
 </template>
@@ -36,6 +36,9 @@ export default {
     handleDelete(id) {
       // TODO: Vamo add algo aqui ainda carma
       console.log('Deletar orientador com id', id)
+    },
+    Ordenar(id) {
+      this.$router.push({name: 'EstagiosOrientador', params: {id}});
     }
   }
 }

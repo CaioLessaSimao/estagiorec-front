@@ -12,13 +12,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in paginatedItems" :key="item.id">
-          <td v-for="header in headers" :key="header.key">
+        <tr v-for="item in paginatedItems" :key="item.Id" >
+          <td v-for="header in headers" :key="header.key" >
             {{ item[header.key] }}
           </td>
           <td v-if="actions">
             <slot name="actions" :item="item" >
-              <button @click="deleteItem(item.id)">Excluir</button>
+              <button @click="ordenar(item.Id)">Ordenar</button>
             </slot>
           </td>
         </tr>
@@ -57,6 +57,10 @@ export default {
     actions: {
       type: Boolean,
       default: true
+    },
+    ordenar: {
+      type: Function,
+      required: true
     }
   },
   data() {
