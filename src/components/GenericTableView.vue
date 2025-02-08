@@ -1,4 +1,8 @@
 <template>
+  <div class="ui icon input" style="width: 100%">
+    <input type="text" placeholder="Search..." v-model="searchQuery"/>
+    <i class="search icon"></i>
+  </div>
   <div class="table-container">
     <v-table class="table-content" density="compact" theme="dark" 
     height="100%"
@@ -57,10 +61,6 @@ export default {
       type: Boolean,
       default: true
     },
-    searchQuery: {
-      type: String,
-      default: ""
-    },
     filterFunction: {
       type: Function,
     }
@@ -71,7 +71,8 @@ export default {
       sortKey: '',
       sortOrder: 'asc',
       currentPage: 1,
-      itemsPerPage: 10
+      itemsPerPage: 10,
+      searchQuery: ""
     }
   },
   computed: {

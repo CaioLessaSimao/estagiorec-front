@@ -1,12 +1,7 @@
 <template>
-  <div class="ui icon input" style="width: 100%">
-    <input type="text" placeholder="Search..." v-model="searchQuery"/>
-    <i class="search icon"></i>
-  </div>
   <generic-table-view
     :headers="headers"
     :fetchData="fetchAlunos"
-    :searchQuery="searchQuery"
     :filterFunction="alunosFilter"
     @Ordenar="Ordenar"
   >
@@ -32,8 +27,7 @@ export default {
         { key: 'Id', label: 'ID' },
         { key: 'Nome', label: 'Nome' },
         { key: 'Matricula', label: 'Matrícula' },
-      ],
-      searchQuery: ""
+      ]
     }
   },
   methods: {

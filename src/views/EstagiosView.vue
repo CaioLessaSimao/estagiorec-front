@@ -1,12 +1,7 @@
 <template>
-    <div class="ui icon input" style="width: 100%">
-      <input type="text" placeholder="Search..." v-model="searchQuery"/>
-      <i class="search icon"></i>
-    </div>
     <generic-table-view
       :headers="headers"
       :fetchData="fetchEstagios"
-      :searchQuery="searchQuery"
       :filterFunction="estagiosFilter"
     >
     </generic-table-view>
@@ -31,8 +26,7 @@
           { key: "DatIni",          label: "DatIni" },
           { key: "DatFim",          label: "DatFim" },
           { key: "Situacao",        label: "Situacao" },
-        ],
-        searchQuery: ""
+        ]
       };
     },
     methods: {
