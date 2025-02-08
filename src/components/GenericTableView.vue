@@ -57,9 +57,12 @@ export default {
       type: Boolean,
       default: true
     },
-    ordenar: {
+    searchQuery: {
+      type: String,
+      default: ""
+    },
+    filterFunction: {
       type: Function,
-      required: true
     }
   },
   data() {
@@ -72,9 +75,14 @@ export default {
     }
   },
   computed: {
+    finalItems() {
+      return this.filterFunction && this.searchQuery 
+          ? this.items.filter(item => this.filterFunction(item, this.searchQuery)) : 
+          this.items;
+    },
     sortedItems() {
-      if (!this.sortKey) return this.items;
-      return this.items.slice().sort((a, b) => {
+      if (!this.sortKey) return this.finalItems;
+      return this.finalItems.slice().sort((a, b) => {
         const aValue = a[this.sortKey];
         const bValue = b[this.sortKey];
         if (aValue < bValue) return this.sortOrder === 'asc' ? -1 : 1;
@@ -89,7 +97,7 @@ export default {
       return sorted.slice(start, end)
     },
     totalPages(){
-      return Math.ceil(this.items.length / this.itemsPerPage)
+      return Math.ceil(this.finalItems.length / this.itemsPerPage)
     }
   },
   methods: {

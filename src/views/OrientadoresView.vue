@@ -1,8 +1,13 @@
 <template>
+  <div class="ui icon input" style="width: 100%">
+    <input type="text" placeholder="Search..." v-model="searchQuery"/>
+    <i class="search icon"></i>
+  </div>
   <generic-table-view
     :headers="headers"
     :fetchData="fetchOrientadores"
-    @delete="handleDelete"
+    :searchQuery="searchQuery"
+    :filterFunction="orientadoresFilter"
   >
     <template #actions="{ item }">
       <button class="button-custom" @click="Ordenar(item.Id)">Ver Estágios</button>
@@ -25,7 +30,8 @@ export default {
         { key: 'Nome', label: 'Nome' },
         { key: 'Email', label: 'Email' },
         { key: 'Telefone', label: 'Telefone' },
-      ]
+      ],
+      searchQuery: ""
     }
   },
   methods: {
@@ -33,9 +39,11 @@ export default {
       const orientadoresController = new OrientadorController();
       return orientadoresController.ObterTodos();
     },
-    handleDelete(id) {
-      // TODO: Vamo add algo aqui ainda carma
-      console.log('Deletar orientador com id', id)
+    orientadoresFilter(item, query) {
+      const q = query.toLowerCase();
+      return item.Nome && item.Nome.toLowerCase().includes(q) ||
+        item.Email && item.Email.toLowerCase().includes(q) ||
+        item.Telefone && item.Telefone.toLowerCase().includes(q)
     },
     Ordenar(id) {
       this.$router.push({name: 'EstagiosOrientador', params: {id}});

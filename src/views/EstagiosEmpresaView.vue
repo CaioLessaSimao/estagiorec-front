@@ -1,8 +1,4 @@
 <template>
-    <div class="ui icon input" style="width: 100%">
-      <input type="text" placeholder="Search..." />
-      <i class="search icon"></i>
-    </div>
     <generic-table-view
       :headers="headers"
       :fetchData="fetchEstagios"

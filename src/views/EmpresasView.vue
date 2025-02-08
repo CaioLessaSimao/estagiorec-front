@@ -1,8 +1,13 @@
 <template>
+  <div class="ui icon input" style="width: 100%">
+    <input type="text" placeholder="Search..." v-model="searchQuery"/>
+    <i class="search icon"></i>
+  </div>
   <generic-table-view
     :headers="headers"
     :fetchData="fetchEmpresas"
-    @delete="handleDelete"
+    :searchQuery="searchQuery"
+    :filterFunction="empresasFilter"
   >
     <template #actions="{ item }">
       <button class="button-custom" @click="Ordenar(item.Id)">Ver Estágios</button>
@@ -23,7 +28,8 @@ export default {
       headers: [
         { key: 'Id', label: 'ID' },
         { key: 'Nome', label: 'Nome' },
-      ]
+      ],
+      searchQuery: ""
     }
   },
   methods: {
@@ -31,9 +37,9 @@ export default {
       const empresasController = new EmpresaController();
       return empresasController.ObterTodos();
     },
-    handleDelete(id) {
-      // TODO: Vamo add algo aqui ainda carma
-      console.log('Deletar empresa com id', id)
+    empresasFilter(item, query) {
+      const q = query.toLowerCase();
+      return item.Nome && item.Nome.toLowerCase().includes(q);
     },
     Ordenar(id) {
       this.$router.push({name: 'EstagiosEmpresa', params: {id}});
