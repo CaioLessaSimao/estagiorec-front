@@ -1,5 +1,6 @@
 <template>
   <generic-table-view
+    ref="genericTable"
     :headers="headers"
     :fetchData="fetchAlunos"
     :filterFunction="alunosFilter"
@@ -8,7 +9,9 @@
   
     <template #actions="{ item }">
       <button class="button-custom" @click="Ordenar(item.Id)">Ver Estágios</button>
+      <button class="button-custom" @click="editarAluno(item)">Editar</button>
     </template>
+
   
   </generic-table-view>
 </template>
@@ -42,7 +45,11 @@ export default {
     },
     Ordenar(id) {
       this.$router.push({name: 'EstagiosAluno', params: {id}});
+    },
+    editarAluno(aluno) {
+      this.$router.push({ name: 'EditAluno', params: { id: aluno.Id } });
     }
+
   }
 }
 </script>
@@ -56,6 +63,10 @@ export default {
   color: rgb(255, 255, 255);
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.button-custom + .button-custom {
+  margin-left: 7px;
 }
 
 .button-custom:hover{

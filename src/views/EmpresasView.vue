@@ -6,6 +6,7 @@
   >
     <template #actions="{ item }">
       <button class="button-custom" @click="Ordenar(item.Id)">Ver Estágios</button>
+      <button class="button-custom" @click="editarEmpresa(item)">Editar</button>
     </template>
   </generic-table-view>
 </template>
@@ -37,6 +38,9 @@ export default {
     },
     Ordenar(id) {
       this.$router.push({name: 'EstagiosEmpresa', params: {id}});
+    },
+    editarEmpresa(empresa) {
+      this.$router.push({ name: 'EditEmpresa', params: { id: empresa.Id } });
     }
   }
 }
@@ -51,6 +55,10 @@ export default {
   color: rgb(255, 255, 255);
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.button-custom + .button-custom {
+  margin-left: 7px;
 }
 
 .button-custom:hover{

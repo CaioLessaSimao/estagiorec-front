@@ -13,6 +13,10 @@ import App from './App.vue'
 import EstagiosAlunoView from './views/EstagiosAlunoView.vue'
 import EstagiosEmpresaView from './views/EstagiosEmpresaView.vue'
 import EstagiosOrientadorView from './views/EstagiosOrientadorView.vue'
+import EditOrientadorView from './views/EditOrientadorView.vue'
+import EditEmpresaView from './views/EditEmpresaView.vue'
+
+import EditAlunoView from './views/EditAlunoView.vue'
 
 
 const router = createRouter({
@@ -26,6 +30,10 @@ const router = createRouter({
         {path: '/estagios/aluno/:id', name: 'EstagiosAluno', component: EstagiosAlunoView},
         {path: '/estagios/empresa/:id', name: 'EstagiosEmpresa', component: EstagiosEmpresaView},
         {path: '/estagios/orientador/:id', name: 'EstagiosOrientador', component: EstagiosOrientadorView},
+
+        { path: '/alunos/edit/:id', name: 'EditAluno', component: EditAlunoView },
+        { path: '/orientadores/edit/:id', name: 'EditOrientador', component: EditOrientadorView },
+        { path: '/empresa/edit/:id', name: 'EditEmpresa', component: EditEmpresaView }
     ]
 });
 

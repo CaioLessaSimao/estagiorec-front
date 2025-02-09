@@ -11,6 +11,7 @@
   import GenericTableView from '@/components/GenericTableView.vue'
   import EstagioController from '@/controllers/EstagioController.js'
   
+  
   export default {
     components: {
       GenericTableView

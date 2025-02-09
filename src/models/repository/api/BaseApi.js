@@ -28,6 +28,7 @@ class BaseApi {
         const response = await axios.delete(`${this.API_URL}/${this.api_entity}/${id}`);
         return response.data;
     }
+    
 }
 
 export default BaseApi;
