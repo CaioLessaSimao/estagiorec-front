@@ -26,7 +26,7 @@ const router = createRouter({
         {path: '/alunos', name: 'Alunos', component: AlunosView},
         {path: '/empresas', name: 'Empresas', component: EmpresasView},
         {path: '/orientadores', name: 'Orientadores', component: OrientadoresView},
-        {path: '/estagios', name: 'Estagios',component: EstagiosView},
+        {path: '/estagios', name: 'Estagios', component: EstagiosView},
         {path: '/', name: 'Login', component: LoginView},
         {path: '/estagios/aluno/:id', name: 'EstagiosAluno', component: EstagiosAlunoView},
         {path: '/estagios/empresa/:id', name: 'EstagiosEmpresa', component: EstagiosEmpresaView},
