@@ -1,17 +1,17 @@
 <template>
-    <generic-table-view
-      :headers="headers"
-      :fetchData="fetchEstagios"
-      :filterFunction="estagiosFilter"
-    >
-    </generic-table-view>
-  </template>
+  <generic-table-view
+    :headers="headers"
+    :fetchData="fetchEstagios"
+    :filterFunction="estagiosFilter"
+  >
+  </generic-table-view>
+</template>
     
-  <script>
-  import GenericTableView from '@/components/GenericTableView.vue'
-  import EstagioController from '@/controllers/EstagioController.js'
-  
-  export default {
+<script>
+import GenericTableView from '@/components/GenericTableView.vue'
+import EstagioController from '@/controllers/EstagioController.js'
+
+export default {
     components: {
       GenericTableView
     },
@@ -43,4 +43,4 @@
       }
     }
   }
-  </script>
+</script>
