@@ -18,7 +18,7 @@
 import EmpresaController from '@/controllers/EmpresaController.js'
 
 export default {
-    name: 'EditEmpresaView',
+    name: 'EditEmpresa',
     data() {
         return {
             empresa: {
@@ -32,18 +32,8 @@ export default {
         }
     },
     mounted() {
-        // Pega o id do empresa passado na rota
         const id = this.$route.params.id;
-        const empresasController = new EmpresaController();
-        // Opcional: buscar os dados atuais do empresa para preencher o formulário
-        empresasController.Obter(id).then(response => {
-            this.empresa = {
-                Id: response.Id,
-                Nome: response.Nome,
-            }
-        }).catch(error => {
-            console.error("Erro ao buscar empresa:", error);
-        });
+        this.loadEmpresa(id);
     },
     methods: {
         async atualizarEmpresa() {
@@ -53,10 +43,17 @@ export default {
                     id: this.empresa.Id,
                     nome: this.empresa.Nome,
                 });
-                // Após atualizar, redireciona para a lista de empresas
                 this.$router.push({ name: 'Empresas' });
             } catch (error) {
                 console.error("Erro ao atualizar a empresa:", error);
+            }
+        },
+        async loadEmpresa(id) {
+            try{
+                const empresasController = new EmpresaController();
+                this.empresa = await empresasController.Obter(id);
+            } catch (error) {
+                console.error("Erro ao carregar a empresa:", error);
             }
         }
     }

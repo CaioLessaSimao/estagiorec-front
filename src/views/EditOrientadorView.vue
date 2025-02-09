@@ -24,12 +24,12 @@
         </v-btn>
         </v-form>
     </v-container>
-    </template>
+</template>
 
-    <script>
-    import OrientadorController from '@/controllers/OrientadorController.js'
+<script>
+import OrientadorController from '@/controllers/OrientadorController.js'
 
-    export default {
+export default {
     name: 'EditOrientadorView',
     data() {
         return {
@@ -47,17 +47,7 @@
     },
     mounted() {
         const id = this.$route.params.id;
-        const orientadoresController = new OrientadorController();
-        orientadoresController.Obter(id).then(response => {
-        this.orientador = {
-            Id: response.Id,
-            Nome: response.Nome,
-            Email: response.Email,
-            Telefone: response.Telefone
-        }
-        }).catch(error => {
-        console.error("Erro ao buscar orientador:", error);
-        });
+        this.loadOrientador(id);
     },
     methods: {
         async atualizarOrientador() {
@@ -73,6 +63,14 @@
         } catch (error) {
             console.error("Erro ao atualizar orientador:", error);
         }
+        },
+        async loadOrientador(id) {
+            try{
+                const orientadoresController = new OrientadorController();
+                this.orientador = await orientadoresController.Obter(id);
+            } catch (error) {
+                console.error("Erro ao carregar orientador:", error);
+            }
         }
     }
 }

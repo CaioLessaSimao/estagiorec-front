@@ -17,6 +17,7 @@ import EditOrientadorView from './views/EditOrientadorView.vue'
 import EditEmpresaView from './views/EditEmpresaView.vue'
 
 import EditAlunoView from './views/EditAlunoView.vue'
+import EditEstagioView from './views/EditEstagioView.vue'
 
 
 const router = createRouter({
@@ -33,7 +34,8 @@ const router = createRouter({
 
         { path: '/alunos/edit/:id', name: 'EditAluno', component: EditAlunoView },
         { path: '/orientadores/edit/:id', name: 'EditOrientador', component: EditOrientadorView },
-        { path: '/empresa/edit/:id', name: 'EditEmpresa', component: EditEmpresaView }
+        { path: '/empresas/edit/:id', name: 'EditEmpresa', component: EditEmpresaView },
+        { path: '/estagios/edit/:id', name: 'EditEstagio', component: EditEstagioView },
     ]
 });
 

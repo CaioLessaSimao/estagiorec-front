@@ -24,7 +24,7 @@
 import AlunoController from '@/controllers/AlunoController.js'
 
 export default {
-    name: 'EditAlunoView',
+    name: 'EditAluno',
     data() {
         return {
             aluno: {
@@ -39,19 +39,9 @@ export default {
         }
     },
     mounted() {
-        // Pega o id do aluno passado na rota
         const id = this.$route.params.id;
-        const alunosController = new AlunoController();
-        // Opcional: buscar os dados atuais do aluno para preencher o formulário
-        alunosController.Obter(id).then(response => {
-            this.aluno = {
-                Id: response.Id,
-                Nome: response.Nome,
-                Matricula: response.Matricula
-            }
-        }).catch(error => {
-            console.error("Erro ao buscar aluno:", error);
-        });
+        this.loadAluno(id);
+
     },
     methods: {
         async atualizarAluno() {
@@ -66,6 +56,15 @@ export default {
                 this.$router.push({ name: 'Alunos' });
             } catch (error) {
                 console.error("Erro ao atualizar o aluno:", error);
+            }
+        },
+
+        async loadAluno(id){    
+            try {
+                const alunosController = new AlunoController();
+                this.aluno = await alunosController.Obter(id);
+            } catch (error) {
+                console.error("Erro ao carregar o aluno:", error);
             }
         }
     }
