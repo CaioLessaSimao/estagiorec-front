@@ -21,24 +21,32 @@ export default {
     name: 'GenericEditView',
     props: {
         entityId: {
-        type: [String, Number],
-        required: true
+            type: [String, Number],
+            required: true
         },
         fetchData: {
-        type: Function,
-        required: true
+            type: Function,
+            required: true
         },
         updateData: {
-        type: Function,
-        required: true
+            type: Function,
+            required: true
+        },
+        deleteData: {
+            type: Function,
+            required: false // TODO: Alterar para true :D (QUEM VER ESSA DSGÇ PODE ALTERAR ESSA CARAIA)
         },
         fields: {
-        type: Array,
-        required: true
+            type: Array,
+            required: true
         },
         redirectRoute: {
-        type: [String, Object],
-        required: true
+            type: [String, Object],
+            required: true
+        },
+        redirectParams: {
+            type: Object,
+            default: () => ({})
         }
     },
     data() {
@@ -66,7 +74,7 @@ export default {
         if (this.$refs.form.validate()) {
             try {
                 await this.updateData(this.record);
-                this.$router.push({ name: this.redirectRoute});
+                this.$router.push({ name: this.redirectRoute, params: this});
             } catch (error) {
                 console.error("Erro ao atualizar registro:", error);
             }

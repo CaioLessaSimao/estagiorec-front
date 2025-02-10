@@ -2,11 +2,11 @@
     <GenericEditView
       :entityId="$route.params.id"
       :fetchData="fetchEstagio"
-      :updateData="atualizarEstagio"
+      :updateData="atualizarEstagioAluno"
       :fields="[
         { key: 'Situacao', label: 'Situacao', required: true },
       ]"
-      redirectRoute='Estagios'
+      redirectRoute='EstagiosAluno'
     />
 </template>
   
@@ -21,7 +21,7 @@ export default {
         const estagioController = new EstagioController();
         return await estagioController.Obter(id);
       },
-      async atualizarEstagio(record) {
+      async atualizarEstagioAluno(record) {
         const estagioController = new EstagioController();
         await estagioController.Atualizar({
             id: record.Id,
@@ -33,7 +33,7 @@ export default {
             orientadorId: record.OrientadorId,
         });
       },
-      async deletarEstagio(id) {
+      async deletarEstagioAluno(id) {
         const estagioController = new EstagioController();
         await estagioController.Deletar(id);
       }

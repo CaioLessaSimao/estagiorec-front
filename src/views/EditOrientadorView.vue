@@ -19,9 +19,9 @@ import OrientadorController from '@/controllers/OrientadorController.js'
 export default {
     components: { GenericEditView },
     methods: {
-      fetchOrientador(id) {
+      async fetchOrientador(id) {
         const orientadorController = new OrientadorController();
-        return orientadorController.Obter(id);
+        return await orientadorController.Obter(id);
       },
       async atualizarOrientador(record) {
         const orientadorController = new OrientadorController();

@@ -1,6 +1,36 @@
 <template>
   <div class="ui icon input" style="width: 100%">
     <input type="text" placeholder="Search..." v-model="searchQuery"/>
+
+    <v-dialog max-width="500">
+  <template v-slot:activator="{ props: activatorProps }">
+    <v-btn
+      v-bind="activatorProps"
+      color="surface-variant"
+      text="Adicionar"
+      variant="flat"
+    ></v-btn>
+  </template>
+
+  <template v-slot:default="{ isActive }">
+    <v-card title="Adicionar">
+      <GenericFormView
+      :fields="fields"
+      />
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn
+          text="Adicionar"
+          @click="() => {
+            isActive.value = false;
+            Adicionar;
+            }" 
+        ></v-btn>
+      </v-card-actions>
+    </v-card>
+  </template>
+</v-dialog>
+
     <i class="search icon"></i>
   </div>
   <div class="table-container">
@@ -46,8 +76,12 @@
 </template>
 
 <script>
+import GenericFormView from './GenericFormView.vue';
 export default {
   name: 'GenericTableView',
+  components: {
+    GenericFormView
+  },
   props: {
     headers: {
       type: Array,
@@ -63,6 +97,13 @@ export default {
     },
     filterFunction: {
       type: Function,
+    },
+    fields: {
+      type: Array,
+      required: true
+    },
+    Adicionar: {
+      type: Function
     }
   },
   data() {

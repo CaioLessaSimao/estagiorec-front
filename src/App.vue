@@ -4,7 +4,7 @@
     <v-app-bar color="primary" density="compact">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Minha Navbar</v-toolbar-title>
+      <v-toolbar-title>SAGE</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -28,9 +28,10 @@
         <v-icon>{{ isDark ? 'mdi-weather-night' : 'mdi-white-balance-sunny' }}</v-icon>
       </v-btn>
     </v-app-bar>
-  <div>
-    <router-view></router-view>
-  </div> 
+
+    <div>
+      <router-view></router-view>
+    </div>
 
 </v-app>
 </template>

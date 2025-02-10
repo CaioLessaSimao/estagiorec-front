@@ -17,9 +17,9 @@ import EmpresaController from '@/controllers/EmpresaController.js'
 export default {
     components: { GenericEditView },
     methods: {
-      fetchEmpresa(id) {
+      async fetchEmpresa(id) {
         const empresaController = new EmpresaController();
-        return empresaController.Obter(id);
+        return await empresaController.Obter(id);
       },
       async atualizarEmpresa(record) {
         const empresaController = new EmpresaController();
@@ -27,6 +27,10 @@ export default {
             id: record.Id,
             nome: record.Nome,
         });
+      },
+      async deletarEmpresa(id) {
+        const empresaController = new EmpresaController();
+        await empresaController.Deletar(id);
       }
     }
 }

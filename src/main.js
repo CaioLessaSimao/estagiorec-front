@@ -18,7 +18,9 @@ import EditEmpresaView from './views/EditEmpresaView.vue'
 
 import EditAlunoView from './views/EditAlunoView.vue'
 import EditEstagioView from './views/EditEstagioView.vue'
-
+import EditEstagioAlunoView from './views/EditEstagioAlunoView.vue'
+import EditEstagioOrientadorView from './views/EditEstagioOrientadorView.vue'
+import EditEstagioEmpresaView from './views/EditEstagioEmpresaView.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -36,6 +38,9 @@ const router = createRouter({
         { path: '/orientadores/edit/:id', name: 'EditOrientador', component: EditOrientadorView },
         { path: '/empresas/edit/:id', name: 'EditEmpresa', component: EditEmpresaView },
         { path: '/estagios/edit/:id', name: 'EditEstagio', component: EditEstagioView },
+        { path: '/estagios/edit/:id', name: 'EditEstagioAluno', component: EditEstagioAlunoView },
+        { path: '/estagios/edit/:id', name: 'EditEstagioOrientador', component: EditEstagioOrientadorView },
+        { path: '/estagios/edit/:id', name: 'EditEstagioEmpresa', component: EditEstagioEmpresaView },
     ]
 });
 

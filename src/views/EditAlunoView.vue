@@ -18,9 +18,9 @@ import AlunoController from '@/controllers/AlunoController.js'
 export default {
     components: { GenericEditView },
     methods: {
-      fetchAluno(id) {
+      async fetchAluno(id) {
         const alunoController = new AlunoController();
-        return alunoController.Obter(id);
+        return await alunoController.Obter(id);
       },
       async atualizarAluno(record) {
         const alunoController = new AlunoController();
@@ -29,6 +29,10 @@ export default {
           nome: record.Nome,
           matricula: record.Matricula
         });
+      },
+      async deletarAluno(id) {
+        const alunoController = new AlunoController();
+        await alunoController.Deletar(id);
       }
     }
 }
