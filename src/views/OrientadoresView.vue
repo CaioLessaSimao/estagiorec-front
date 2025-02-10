@@ -3,6 +3,7 @@
     :headers="headers"
     :fetchData="fetchOrientadores"
     :filterFunction="orientadoresFilter"
+    :addFunction="adicionarOrientador"
     :fields="[
         { key: 'Nome', label: 'Nome', required: true },
         { key: 'Email', label: 'Email', required: true },
@@ -50,6 +51,11 @@ export default {
     },
     editarOrientador(orientador) {
       this.$router.push({ name: 'EditOrientador', params: { id: orientador.Id } });
+    },
+    async adicionarOrientador(orientador){
+      const orientadoresController = new OrientadorController();
+      await orientadoresController.Criar(orientador);
+      window.location.reload();
     }
   }
 }

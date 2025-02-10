@@ -4,11 +4,11 @@
     :headers="headers"
     :fetchData="fetchAlunos"
     :filterFunction="alunosFilter"
+    :addFunction="adicionarAluno"
     :fields="[
         { key: 'Nome', label: 'Nome', required: true },
         { key: 'Matricula', label: 'Matrícula', required: true }
       ]"
-    :Adicionar="Adicionar"
     @Ordenar="Ordenar"
   >
   
@@ -54,8 +54,10 @@ export default {
     editarAluno(aluno) {
       this.$router.push({ name: 'EditAluno', params: { id: aluno.Id } });
     },
-    Adicionar(){
-      console.log("Ta funcionando")
+    async adicionarAluno(aluno){
+      const alunosController = new AlunoController();
+      await alunosController.Criar(aluno);
+      window.location.reload();
     }
 
   }
