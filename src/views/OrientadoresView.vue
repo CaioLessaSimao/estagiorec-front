@@ -55,7 +55,7 @@ export default {
     async adicionarOrientador(orientador){
       const orientadoresController = new OrientadorController();
       await orientadoresController.Criar(orientador);
-      this.$router.push({ name: 'Orientadores' });
+      window.location.reload();
     }
   }
 }

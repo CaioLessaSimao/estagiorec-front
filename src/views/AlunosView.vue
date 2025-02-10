@@ -57,7 +57,7 @@ export default {
     async adicionarAluno(aluno){
       const alunosController = new AlunoController();
       await alunosController.Criar(aluno);
-      this.$router.push({ name: 'Alunos' });
+      window.location.reload();
     }
 
   }

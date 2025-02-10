@@ -49,7 +49,7 @@ export default {
     async adicionarEmpresa(empresa){
       const empresasController = new EmpresaController();
       await empresasController.Criar(empresa);
-      this.$router.push({ name: 'Empresas' });
+      window.location.reload();
     }
   }
 }
