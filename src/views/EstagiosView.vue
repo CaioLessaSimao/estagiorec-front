@@ -14,6 +14,7 @@
 <script>
 import GenericTableView from '@/components/GenericTableView.vue'
 import EstagioController from '@/controllers/EstagioController.js'
+import { mapSituacao } from "@/models/enums/SituacaoEnum.js";
 
 export default {
   components: {
@@ -36,17 +37,24 @@ export default {
   methods: {
     async fetchEstagios() {
       const estagiosController = new EstagioController();
-      return estagiosController.ObterTodos();
+      const registros = await estagiosController.ObterTodos();        
+      registros.forEach(item => {
+          item.Situacao = mapSituacao(item.Situacao);
+        }
+      );
+      return registros;
     },
     estagiosFilter(item, query) {
       const q = query.toLowerCase();
-      return item.AlunoNome && item.AlunoNome.toLowerCase().includes(q) ||
+      return (
+        item.AlunoNome && item.AlunoNome.toLowerCase().includes(q) ||
         item.AlunoMatricula && item.AlunoMatricula.toLowerCase().includes(q) ||
         item.OrientadorNome && item.OrientadorNome.toLowerCase().includes(q) ||
         item.EmpresaNome && item.EmpresaNome.toLowerCase().includes(q)
+      );
     },
     editarEstagio(estagio){
-      this.$router.push({name: 'EditEstagio', params: {id: estagio.Id}});
+      this.$router.push({ name: 'EditEstagio', params: { id: estagio.Id}});
     }
   }
 }

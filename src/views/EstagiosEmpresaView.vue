@@ -13,6 +13,7 @@
 <script>
 import GenericTableView from '@/components/GenericTableView.vue'
 import EstagioController from '@/controllers/EstagioController.js'
+import { mapSituacao } from "@/models/enums/SituacaoEnum.js";
 
 export default {
   components: {
@@ -33,9 +34,16 @@ export default {
     };
   },
   methods: {
-    fetchEstagios() {
+    async fetchEstagios() {
       const estagiosController = new EstagioController();
-      return estagiosController.ObterPorEmpresa(this.$route.params.id);
+      const registros = await estagiosController.ObterPorEmpresa(this.$route.params.id);
+      
+      registros.forEach(item => {
+          item.Situacao = mapSituacao(item.Situacao);
+        }
+      );
+
+      return registros;
     },
     estagiosFilter(item, query) {
       const q = query.toLowerCase();

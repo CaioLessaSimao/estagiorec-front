@@ -13,21 +13,24 @@
 <script>
 import GenericEditView from '@/components/GenericEditView.vue'
 import EstagioController from '@/controllers/EstagioController.js'
+import { mapSituacao, mapSituacaoInverso } from "@/models/enums/SituacaoEnum.js";
 
 export default {
     components: { GenericEditView },
     methods: {
       async fetchEstagio(id) {
         const estagioController = new EstagioController();
-        return await estagioController.Obter(id);
+        const record = await estagioController.Obter(id);
+        record.Situacao = mapSituacao(record.Situacao);
+        return record;
       },
       async atualizarEstagioAluno(record) {
         const estagioController = new EstagioController();
         await estagioController.Atualizar({
             id: record.Id,
             datIni: record.DatIni,
-            dateFim: record.DatFim,
-            situacao: parseInt(record.Situacao),
+            datFim: record.DatFim,
+            situacao: mapSituacaoInverso(record.Situacao),
             alunoId: record.AlunoId,
             empresaId: record.EmpresaId,
             orientadorId: record.OrientadorId,
