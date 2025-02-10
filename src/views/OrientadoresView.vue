@@ -3,6 +3,11 @@
     :headers="headers"
     :fetchData="fetchOrientadores"
     :filterFunction="orientadoresFilter"
+    :fields="[
+        { key: 'Nome', label: 'Nome', required: true },
+        { key: 'Email', label: 'Email', required: true },
+        { key: 'Telefone', label: 'Telefone', required: true }
+      ]"
   >
     <template #actions="{ item }">
       <button class="button-custom" @click="Ordenar(item.Id)">Ver Estágios</button>

@@ -4,6 +4,9 @@
     :fetchData="fetchEstagios"
     :filterFunction="estagiosFilter"
   >
+  <template #actions="{ item }">
+    <button class="button-custom" @click="editarEstagioAluno(item)">Editar</button>
+  </template>
   </generic-table-view>
 </template>
     
@@ -40,7 +43,27 @@ export default {
           item.AlunoMatricula && item.AlunoMatricula.toLowerCase().includes(q) ||
           item.OrientadorNome && item.OrientadorNome.toLowerCase().includes(q) ||
           item.EmpresaNome && item.EmpresaNome.toLowerCase().includes(q)
+      },
+      editarEstagioAluno(estagio){
+      this.$router.push({name: 'EditEstagioAluno', params: {id: estagio.Id}});
       }
     }
   }
 </script>
+
+<style scoped>
+.button-custom{
+  background-color: #757474;
+  border: none;
+  border-radius: 2px;
+  padding: 4px 8px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.button-custom:hover{
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.8);
+  transform: translateY(-1.5px);
+}
+</style>

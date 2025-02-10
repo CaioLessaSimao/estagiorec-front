@@ -3,6 +3,9 @@
     :headers="headers"
     :fetchData="fetchEmpresas"
     :filterFunction="empresasFilter"
+    :fields="[
+        { key: 'Nome', label: 'Nome', required: true },
+      ]"
   >
     <template #actions="{ item }">
       <button class="button-custom" @click="Ordenar(item.Id)">Ver Estágios</button>
