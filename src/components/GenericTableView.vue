@@ -3,33 +3,23 @@
     <input type="text" placeholder="Search..." v-model="searchQuery"/>
 
     <v-dialog max-width="500">
-  <template v-slot:activator="{ props: activatorProps }">
-    <v-btn
-      v-bind="activatorProps"
-      color="surface-variant"
-      text="Adicionar"
-      variant="flat"
-    ></v-btn>
-  </template>
-
-  <template v-slot:default="{ isActive }">
-    <v-card title="Adicionar">
-      <GenericFormView
-      :fields="fields"
-      />
-      <v-card-actions>
-        <v-spacer></v-spacer>
+      <template v-slot:activator="{ props: activatorProps }">
         <v-btn
+          v-bind="activatorProps"
+          color="surface-variant"
           text="Adicionar"
-          @click="() => {
-            isActive.value = false;
-            Adicionar;
-            }" 
+          variant="flat"
         ></v-btn>
-      </v-card-actions>
-    </v-card>
-  </template>
-</v-dialog>
+      </template>
+      <template v-slot:default="{ isActive }">
+        <v-card title="Adicionar">
+          <GenericFormView
+          :fields="fields"
+          @submit="(record) => {isActive.value = false; return handleSubmit(record)}"
+          />
+        </v-card>
+      </template>
+    </v-dialog>
 
     <i class="search icon"></i>
   </div>
@@ -102,8 +92,9 @@ export default {
       type: Array,
       required: true
     },
-    Adicionar: {
-      type: Function
+    addFunction: {
+      type: Function,
+      required: true
     }
   },
   data() {
@@ -158,7 +149,10 @@ export default {
       } catch (error) {
         console.error(error);
       }
-    }
+    },
+    async handleSubmit(record) {
+      this.addFunction(record);
+    },
   },
   mounted() {
     this.loadData();

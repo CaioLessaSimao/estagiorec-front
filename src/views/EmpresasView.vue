@@ -3,6 +3,7 @@
     :headers="headers"
     :fetchData="fetchEmpresas"
     :filterFunction="empresasFilter"
+    :addFunction="adicionarEmpresa"
     :fields="[
         { key: 'Nome', label: 'Nome', required: true },
       ]"
@@ -44,6 +45,11 @@ export default {
     },
     editarEmpresa(empresa) {
       this.$router.push({ name: 'EditEmpresa', params: { id: empresa.Id } });
+    },
+    async adicionarEmpresa(empresa){
+      const empresasController = new EmpresaController();
+      await empresasController.Criar(empresa);
+      this.$router.push({ name: 'Empresas' });
     }
   }
 }

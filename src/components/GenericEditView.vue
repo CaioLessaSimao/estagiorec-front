@@ -71,14 +71,14 @@ export default {
         }
         },
         async submit() {
-        if (this.$refs.form.validate()) {
-            try {
-                await this.updateData(this.record);
-                this.$router.push({ name: this.redirectRoute, params: this});
-            } catch (error) {
-                console.error("Erro ao atualizar registro:", error);
+            if (this.$refs.form.validate()) {
+                try {
+                    await this.updateData(this.record);
+                    this.$router.push({ name: this.redirectRoute, params: this});
+                } catch (error) {
+                    console.error("Erro ao atualizar registro:", error);
+                }
             }
-        }
         }
     }
 }
