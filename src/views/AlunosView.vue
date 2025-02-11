@@ -59,7 +59,6 @@ export default {
       await alunosController.Criar(aluno);
       window.location.reload();
     }
-
   }
 }
 </script>

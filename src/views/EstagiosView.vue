@@ -3,6 +3,9 @@
     :headers="headers"
     :fetchData="fetchEstagios"
     :filterFunction="estagiosFilter"
+    :notEstagio="notEstagio"
+    :submitEstagio="submitEstagio"
+    
   >
   <template #actions="{ item }">
     <button class="button-custom" @click="editarEstagio(item)">Editar</button>
@@ -55,7 +58,16 @@ export default {
     },
     editarEstagio(estagio){
       this.$router.push({ name: 'EditEstagio', params: { id: estagio.Id}});
-    }
+    },
+    notEstagio(){
+      return false;
+    },
+    async submitEstagio(values){
+      const estagiosController = new EstagioController()
+      await estagiosController.Criar(values)
+      console.log(values)
+      window.location.reload();
+    },
   }
 }
 

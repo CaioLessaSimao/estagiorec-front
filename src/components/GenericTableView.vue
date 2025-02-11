@@ -2,7 +2,7 @@
   <div class="ui icon input" style="width: 100%">
     <input type="text" placeholder="Search..." v-model="searchQuery"/>
 
-    <v-dialog max-width="500">
+    <v-dialog max-width="500" v-if="notEstagio()">
       <template v-slot:activator="{ props: activatorProps }">
         <v-btn
           v-bind="activatorProps"
@@ -13,13 +13,34 @@
       </template>
       <template v-slot:default="{ isActive }">
         <v-card title="Adicionar">
-          <GenericFormView
+          <GenericFormView 
           :fields="fields"
           @submit="(record) => {isActive.value = false; return handleSubmit(record)}"
           />
         </v-card>
       </template>
     </v-dialog>
+
+
+    <v-dialog max-width="500" v-if="!notEstagio()">
+      <template v-slot:activator="{ props: activatorProps }">
+        <v-btn
+          v-bind="activatorProps"
+          color="surface-variant"
+          text="Adicionar"
+          variant="flat"
+        ></v-btn>
+      </template>
+      <template v-slot:default="{ isActive }">
+        <v-card title="Adicionar Estágio">
+          <FormAdicionarView
+          :onSubmit="(record) => {isActive.value = false; return submitEstagio(record)}"
+          />
+          <v-btn @click="isActive.value = false"></v-btn>
+        </v-card>
+      </template>
+    </v-dialog>
+
 
     <i class="search icon"></i>
   </div>
@@ -67,10 +88,12 @@
 
 <script>
 import GenericFormView from './GenericFormView.vue';
+import FormAdicionarView from './FormAdicionarView.vue';
 export default {
   name: 'GenericTableView',
   components: {
-    GenericFormView
+    GenericFormView,
+    FormAdicionarView
   },
   props: {
     headers: {
@@ -95,6 +118,13 @@ export default {
     addFunction: {
       type: Function,
       required: true
+    },
+    notEstagio: {
+      type: Function,
+      default: (() => true)
+    },
+    submitEstagio:{
+      type: Function
     }
   },
   data() {

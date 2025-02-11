@@ -1,4 +1,5 @@
 <template>
+  <div>
     <GenericEditView
       :entityId="$route.params.id"
       :fetchData="fetchEmpresa"
@@ -8,6 +9,10 @@
       ]"
       redirectRoute='Empresas'
     />
+    <v-btn color="red" dark class="mt-4" @click="confirmarExclusao">
+      Excluir Empresa
+    </v-btn>
+  </div>
 </template>
   
 <script>
@@ -31,6 +36,12 @@ export default {
       async deletarEmpresa(id) {
         const empresaController = new EmpresaController();
         await empresaController.Deletar(id);
+      },
+      async confirmarExclusao() {
+        if (window.confirm('Tem certeza que deseja excluir esta empresa?')) {
+          await this.deletarEmpresa(this.$route.params.id);
+          this.$router.push({ name: 'Empresas' });
+        }
       }
     }
 }

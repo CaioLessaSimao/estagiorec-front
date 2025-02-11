@@ -25,10 +25,11 @@ class BaseApi {
     }
 
     static async Deletar(id) {
-        const response = await axios.delete(`${this.API_URL}/${this.api_entity}/${id}`);
+        const response = await axios.delete(`${this.API_URL}/${this.api_entity}/${id}`, {
+            data: {},
+        });
         return response.data;
     }
-    
 }
 
 export default BaseApi;

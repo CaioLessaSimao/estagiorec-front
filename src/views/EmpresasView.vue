@@ -48,6 +48,7 @@ export default {
     },
     async adicionarEmpresa(empresa){
       const empresasController = new EmpresaController();
+
       await empresasController.Criar(empresa);
       window.location.reload();
     }

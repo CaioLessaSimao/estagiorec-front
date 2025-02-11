@@ -3,6 +3,7 @@
     :headers="headers"
     :fetchData="fetchEstagios"
     :filterFunction="estagiosFilter"
+    :notEstagio="notEstagio"
   >
   <template #actions="{ item }">
     <button class="button-custom" @click="editarEstagioOrientador(item)">Editar</button>
@@ -53,6 +54,9 @@ export default {
     },
     editarEstagioOrientador(estagio){
       this.$router.push({name: 'EditEstagioOrientador', params: {id: estagio.Id}});
+    },
+    notEstagio(){
+      return false;
     }
   }
 }

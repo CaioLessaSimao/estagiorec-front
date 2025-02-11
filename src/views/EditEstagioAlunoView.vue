@@ -1,4 +1,5 @@
 <template>
+  <div>
     <GenericEditView
       :entityId="$route.params.id"
       :fetchData="fetchEstagio"
@@ -8,6 +9,10 @@
       ]"
       redirectRoute='EstagiosAluno'
     />
+    <v-btn color="red" dark class="mt-4" @click="confirmarExclusao">
+      Excluir Estagio
+    </v-btn>
+  </div>
 </template>
   
 <script>
@@ -39,6 +44,12 @@ export default {
       async deletarEstagioAluno(id) {
         const estagioController = new EstagioController();
         await estagioController.Deletar(id);
+      },
+      async confirmarExclusao() {
+        if (window.confirm('Tem certeza que deseja excluir este estagio?')) {
+          await this.deletarEstagioAluno(this.$route.params.id);
+          this.$router.push({ name: 'Estagios' });
+        }
       }
     }
 }
