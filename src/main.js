@@ -4,7 +4,6 @@ import AlunosView from './views/AlunosView.vue'
 import EmpresasView from './views/EmpresasView'
 import OrientadoresView from './views/OrientadoresView'
 import EstagiosView from './views/EstagiosView'
-import LoginView from './views/LoginView.vue'
 import 'vuetify/styles'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
@@ -25,11 +24,10 @@ import EditEstagioEmpresaView from './views/EditEstagioEmpresaView.vue'
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        {path: '/alunos', name: 'Alunos', component: AlunosView},
+        {path: '/alunos', name: 'Alunos', component: AlunosView, alias: '/'},
         {path: '/empresas', name: 'Empresas', component: EmpresasView},
         {path: '/orientadores', name: 'Orientadores', component: OrientadoresView},
         {path: '/estagios', name: 'Estagios', component: EstagiosView},
-        {path: '/', name: 'Login', component: LoginView},
         {path: '/estagios/aluno/:id', name: 'EstagiosAluno', component: EstagiosAlunoView},
         {path: '/estagios/empresa/:id', name: 'EstagiosEmpresa', component: EstagiosEmpresaView},
         {path: '/estagios/orientador/:id', name: 'EstagiosOrientador', component: EstagiosOrientadorView},
