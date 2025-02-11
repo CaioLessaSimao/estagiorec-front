@@ -9,10 +9,13 @@
                 :required="field.required || false"
                 ></v-text-field>
             </template>
-            <v-btn color="primary" @click="submit" :disabled="!valid">
+            <v-btn color="primary" @click="submitEdit" :disabled="!valid">
                 Salvar
             </v-btn>
         </v-form>
+        <v-btn color="red" dark class="mt-4" @click="confirmarExclusao">
+            Excluir
+        </v-btn>
     </v-container>
 </template>
   
@@ -34,7 +37,7 @@ export default {
         },
         deleteData: {
             type: Function,
-            required: false // TODO: Alterar para true :D (QUEM VER ESSA DSGÇ PODE ALTERAR ESSA CARAIA)
+            required: false
         },
         fields: {
             type: Array,
@@ -70,7 +73,7 @@ export default {
             console.error("Erro ao carregar registro:", error);
         }
         },
-        async submit() {
+        async submitEdit() {
             if (this.$refs.form.validate()) {
                 try {
                     await this.updateData(this.record);
@@ -79,7 +82,22 @@ export default {
                     console.error("Erro ao atualizar registro:", error);
                 }
             }
+        },
+        async submitDelete() {
+            try {
+                await this.deleteData(this.entityId);
+                this.$router.push({ name: this.redirectRoute, params: this});
+            } catch (error) {
+                console.error("Erro ao deletar registro:", error);
+                alert('Não é possível apagar pois possui estágio associado. Apague o estágio primeiro.');
+            }
+        },
+        async confirmarExclusao() {
+            if (window.confirm('Tem certeza que deseja excluir este registro?')) {
+                await this.submitDelete();
+            }
         }
+
     }
 }
 </script>

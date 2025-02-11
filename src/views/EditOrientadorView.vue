@@ -1,9 +1,9 @@
 <template>
-  <div>
     <GenericEditView
       :entityId="$route.params.id"
       :fetchData="fetchOrientador"
       :updateData="atualizarOrientador"
+      :deleteData="deletarOrientador"
       :fields="[
         { key: 'Nome', label: 'Nome', required: true },
         { key: 'Email', label: 'Email', required: true },
@@ -11,10 +11,6 @@
       ]"
       redirectRoute='Orientadores'
     />
-    <v-btn color="red" dark class="mt-4" @click="confirmarExclusao">
-      Excluir Orientador
-    </v-btn>
-  </div>
 </template>
   
 <script>
@@ -37,17 +33,6 @@ export default {
             telefone: record.Telefone
         });
       },
-
-      async deletarOrientador(id) {
-        const orientadorController = new OrientadorController();
-        await orientadorController.Deletar(id);
-      },
-      async confirmarExclusao() {
-        if (window.confirm('Tem certeza que deseja excluir este orientador?')) {
-          await this.deletarOrientador(this.$route.params.id);
-          this.$router.push({ name: 'Orientadores' });
-        }
-      }
     }
 }
 </script>

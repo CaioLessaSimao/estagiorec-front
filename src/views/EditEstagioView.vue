@@ -1,20 +1,16 @@
 <template>
-  <div>
     <GenericEditView
       :entityId="$route.params.id"
       :fetchData="fetchEstagio"
       :updateData="atualizarEstagio"
+      :deleteData="deletarEstagio"
       :fields="[
         { key: 'Situacao', label: 'Situação', required: true }
       ]"
       redirectRoute='Estagios'
     />
-    <v-btn color="red" dark class="mt-4" @click="confirmarExclusao">
-      Excluir Estagio
-    </v-btn>
-  </div>
 </template>
-  
+
 <script>
 import GenericEditView from '@/components/GenericEditView.vue'
 import EstagioController from '@/controllers/EstagioController.js'
@@ -44,16 +40,6 @@ export default {
         orientadorId: record.OrientadorId,
       });
     },
-    async deletarEstagio(id) {
-      const estagioController = new EstagioController();
-      await estagioController.Deletar(id);
-    },
-    async confirmarExclusao() {
-        if (window.confirm('Tem certeza que deseja excluir este estagio?')) {
-          await this.deletarEstagio(this.$route.params.id);
-          this.$router.push({ name: 'Estagios' });
-        }
-      }
   }
 }
 </script>
