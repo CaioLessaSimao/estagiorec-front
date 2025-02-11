@@ -47,10 +47,6 @@ export default {
             type: [String, Object],
             required: true
         },
-        redirectParams: {
-            type: Object,
-            default: () => ({})
-        }
     },
     data() {
         return {
@@ -89,7 +85,7 @@ export default {
                 this.$router.push({ name: this.redirectRoute, params: this});
             } catch (error) {
                 console.error("Erro ao deletar registro:", error);
-                alert('Não é possível apagar pois possui estágio associado. Apague o estágio primeiro.');
+                alert('Não é possível apagar pois possui estágio associado. Apague o(s) estágio(s) primeiro.');
             }
         },
         async confirmarExclusao() {

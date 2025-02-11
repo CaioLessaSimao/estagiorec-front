@@ -37,6 +37,10 @@ export default {
             orientadorId: record.OrientadorId,
         });
       },
+      async deletarEstagioEmpresa(id) {
+        const estagioController = new EstagioController();
+        await estagioController.Deletar(id);
+      },
     }
 }
 </script>

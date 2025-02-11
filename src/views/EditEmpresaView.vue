@@ -29,6 +29,10 @@ export default {
             nome: record.Nome,
         });
       },
+      async deletarEmpresa(id) {
+        const empresaController = new EmpresaController();
+        await empresaController.Deletar(id);
+      },
     }
 }
 </script>

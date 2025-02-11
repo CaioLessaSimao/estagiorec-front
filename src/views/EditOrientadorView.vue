@@ -33,6 +33,10 @@ export default {
             telefone: record.Telefone
         });
       },
+      async deletarOrientador(id) {
+        const orientadorController = new OrientadorController();
+        await orientadorController.Deletar(id);
+      },
     }
 }
 </script>

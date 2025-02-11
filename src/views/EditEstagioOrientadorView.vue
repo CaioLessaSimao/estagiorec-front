@@ -7,7 +7,6 @@
       :fields="[
         { key: 'Situacao', label: 'Situacao', required: true },
       ]"
-      :redirectParams="{ id: $ }"
       redirectRoute='EstagiosOrientador'
     />
 </template>
@@ -37,6 +36,10 @@ export default {
             empresaId: record.EmpresaId,
             orientadorId: record.OrientadorId,
         });
+      },
+      async deletarEstagioOrientador(id) {
+        const estagioController = new EstagioController();
+        await estagioController.Deletar(id);
       },
     }
 }

@@ -58,7 +58,7 @@ export default {
       const alunosController = new AlunoController();
       await alunosController.Criar(aluno);
       window.location.reload();
-    }
+    },
   }
 }
 </script>

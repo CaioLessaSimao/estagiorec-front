@@ -31,6 +31,10 @@ export default {
           matricula: record.Matricula
         });
       },
+      async deletarAluno(id) {
+        const alunoController = new AlunoController();
+        await alunoController.Deletar(id);
+      },
     }
   }
 </script>
