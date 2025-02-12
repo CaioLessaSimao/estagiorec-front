@@ -1,5 +1,5 @@
 <template>
-    <GenericEditView
+    <GenericEdit
       :entityId="$route.params.id"
       :fetchData="fetchOrientador"
       :updateData="atualizarOrientador"
@@ -14,11 +14,11 @@
 </template>
   
 <script>
-import GenericEditView from '@/components/GenericEditView.vue'
+import GenericEdit from '@/components/GenericEdit.vue'
 import OrientadorController from '@/controllers/OrientadorController.js'
 
 export default {
-    components: { GenericEditView },
+    components: { GenericEdit },
     methods: {
       async fetchOrientador(id) {
         const orientadorController = new OrientadorController();

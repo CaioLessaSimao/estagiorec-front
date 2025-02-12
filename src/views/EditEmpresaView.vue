@@ -1,5 +1,5 @@
 <template>
-    <GenericEditView
+    <GenericEdit
       :entityId="$route.params.id"
       :fetchData="fetchEmpresa"
       :updateData="atualizarEmpresa"
@@ -12,11 +12,11 @@
 </template>
   
 <script>
-import GenericEditView from '@/components/GenericEditView.vue'
+import GenericEdit from '@/components/GenericEdit.vue'
 import EmpresaController from '@/controllers/EmpresaController.js'
 
 export default {
-    components: { GenericEditView },
+    components: { GenericEdit },
     methods: {
       async fetchEmpresa(id) {
         const empresaController = new EmpresaController();

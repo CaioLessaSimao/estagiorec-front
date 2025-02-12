@@ -21,7 +21,7 @@
   
 <script>
 export default {
-    name: "GenericFormView",
+    name: "GenericForm",
     props: {
         fields: {
         type: Array,

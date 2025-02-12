@@ -1,5 +1,5 @@
 <template>
-  <generic-table-view
+  <generic-table
     :headers="headers"
     :fetchData="fetchEstagios"
     :filterFunction="estagiosFilter"
@@ -8,17 +8,17 @@
   <template #actions="{ item }">
     <button class="button-custom" @click="editarEstagioAluno(item)">Editar</button>
   </template>
-  </generic-table-view>
+  </generic-table>
 </template>
     
 <script>
-import GenericTableView from '@/components/GenericTableView.vue'
+import GenericTable from '@/components/GenericTable.vue'
 import EstagioController from '@/controllers/EstagioController.js'
 import { mapSituacao } from "@/models/enums/SituacaoEnum.js";
 
 export default {
     components: {
-      GenericTableView
+      GenericTable
     },
     data() {
       return {

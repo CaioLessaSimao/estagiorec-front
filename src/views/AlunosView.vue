@@ -1,5 +1,5 @@
 <template>
-  <generic-table-view
+  <generic-table
     ref="genericTable"
     :headers="headers"
     :fetchData="fetchAlunos"
@@ -18,16 +18,16 @@
     </template>
 
   
-  </generic-table-view>
+  </generic-table>
 </template>
 
 <script>
-import GenericTableView from '@/components/GenericTableView.vue'
+import GenericTable from '@/components/GenericTable.vue'
 import AlunoController from '@/controllers/AlunoController.js'
 
 export default {
   components: {
-    GenericTableView
+    GenericTable
   },
   data() {
     return {

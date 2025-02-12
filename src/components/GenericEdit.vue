@@ -21,7 +21,7 @@
   
 <script>
 export default {
-    name: 'GenericEditView',
+    name: 'GenericEdit',
     props: {
         entityId: {
             type: [String, Number],

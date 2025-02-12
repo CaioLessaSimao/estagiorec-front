@@ -1,5 +1,5 @@
 <template>
-  <generic-table-view
+  <generic-table
     :headers="headers"
     :fetchData="fetchOrientadores"
     :filterFunction="orientadoresFilter"
@@ -14,16 +14,16 @@
       <button class="button-custom" @click="Ordenar(item.Id)">Ver Estágios</button>
       <button class="button-custom" @click="editarOrientador(item)">Editar</button>
     </template>
-  </generic-table-view>
+  </generic-table>
 </template>
   
 <script>
-import GenericTableView from '@/components/GenericTableView.vue'
+import GenericTable from '@/components/GenericTable.vue'
 import OrientadorController from '@/controllers/OrientadorController.js'
   
 export default {
   components: {
-    GenericTableView
+    GenericTable
   },
   data() {
     return {

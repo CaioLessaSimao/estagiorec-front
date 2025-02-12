@@ -1,5 +1,5 @@
 <template>
-    <GenericEditView
+    <GenericEdit
       :entityId="$route.params.id"
       :fetchData="fetchEstagio"
       :updateData="atualizarEstagioEmpresa"
@@ -12,12 +12,12 @@
 </template>
   
 <script>
-import GenericEditView from '@/components/GenericEditView.vue'
+import GenericEdit from '@/components/GenericEdit.vue'
 import EstagioController from '@/controllers/EstagioController.js'
 import { mapSituacao, mapSituacaoInverso } from "@/models/enums/SituacaoEnum.js";
 
 export default {
-    components: { GenericEditView },
+    components: { GenericEdit },
     methods: {
       async fetchEstagio(id) {
         const estagioController = new EstagioController();

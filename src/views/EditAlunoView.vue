@@ -1,5 +1,5 @@
 <template>
-    <GenericEditView
+    <GenericEdit
       :entityId="$route.params.id"
       :fetchData="fetchAluno"
       :updateData="atualizarAluno"
@@ -13,11 +13,11 @@
 </template>
   
 <script>
-import GenericEditView from '@/components/GenericEditView.vue'
+import GenericEdit from '@/components/GenericEdit.vue'
 import AlunoController from '@/controllers/AlunoController.js'
 
 export default {
-    components: { GenericEditView },
+    components: { GenericEdit },
     methods: {
       async fetchAluno(id) {
         const alunoController = new AlunoController();

@@ -13,7 +13,7 @@
       </template>
       <template v-slot:default="{ isActive }">
         <v-card title="Adicionar">
-          <GenericFormView 
+          <GenericForm 
           :fields="fields"
           @submit="(record) => {isActive.value = false; return handleSubmit(record)}"
           />
@@ -33,7 +33,7 @@
       </template>
       <template v-slot:default="{ isActive }">
         <v-card title="Adicionar Estágio">
-          <FormAdicionarView
+          <FormAdicionar
           :onSubmit="(record) => {isActive.value = false; return submitEstagio(record)}"
           />
           <v-btn @click="isActive.value = false"></v-btn>
@@ -87,13 +87,13 @@
 </template>
 
 <script>
-import GenericFormView from './GenericFormView.vue';
-import FormAdicionarView from './FormAdicionarView.vue';
+import GenericForm from './GenericForm.vue';
+import FormAdicionar from './FormAdicionar.vue';
 export default {
-  name: 'GenericTableView',
+  name: 'GenericTable',
   components: {
-    GenericFormView,
-    FormAdicionarView
+    GenericForm,
+    FormAdicionar
   },
   props: {
     headers: {

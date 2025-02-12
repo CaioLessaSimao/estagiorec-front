@@ -1,5 +1,5 @@
 <template>
-  <generic-table-view
+  <generic-table
     :headers="headers"
     :fetchData="fetchEmpresas"
     :filterFunction="empresasFilter"
@@ -12,16 +12,16 @@
       <button class="button-custom" @click="Ordenar(item.Id)">Ver Estágios</button>
       <button class="button-custom" @click="editarEmpresa(item)">Editar</button>
     </template>
-  </generic-table-view>
+  </generic-table>
 </template>
   
 <script>
-import GenericTableView from '@/components/GenericTableView.vue'
+import GenericTable from '@/components/GenericTable.vue'
 import EmpresaController from '@/controllers/EmpresaController.js'
 
 export default {
   components: {
-    GenericTableView
+    GenericTable
   },
   data() {
     return {
