@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class BaseApi {
-    static API_URL = 'http://localhost:80';
+    static API_URL = `${process.env.VUE_APP_API_URL}:${process.env.VUE_APP_API_PORT}`;
     static api_entity = '';
 
     static async ObterTodos() {
